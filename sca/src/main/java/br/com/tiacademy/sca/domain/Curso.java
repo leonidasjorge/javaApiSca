@@ -23,6 +23,7 @@ public class Curso {
 	
 	private String cargaHoraria;
 	private Date dataCadastro;
+	
 	private String nome;
 	
 }
