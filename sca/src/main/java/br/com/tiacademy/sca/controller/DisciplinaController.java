@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.tiacademy.sca.core.crud.CrudController;
 import br.com.tiacademy.sca.domain.Disciplina;
+import br.com.tiacademy.sca.dto.DisciplinaDTO;
 
 @RestController
 @RequestMapping("/disciplina")
-public class DisciplinaController extends CrudController<Disciplina, Long> {
+public class DisciplinaController extends CrudController<Disciplina, DisciplinaDTO, Long> {
 
 }
