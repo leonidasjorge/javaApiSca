@@ -1,6 +1,9 @@
 package br.com.tiacademy.sca.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +18,25 @@ import br.com.tiacademy.sca.repository.CursoRepository;
 @RequestMapping("/curso")
 public class CursoController extends CrudController<Curso, CursoDTO, Long> {
 
-	/*
-	 * @Autowired public CursoRepository repository;
-	 * 
-	 * @GetMapping("/nome/{nome}") public Curso listarNome(@PathVariable String
-	 * nome) { return repository.findByNome(nome); }
-	 */
+	@Autowired
+	protected CursoRepository repository;
+	
+	// EndPoint - Query HQL
+	@GetMapping(path = "/consulta/{nome}")
+	public ResponseEntity<Curso> buscarCurso(@PathVariable String nome) {
+		return ResponseEntity.ok(repository.consultaCurso(nome));
+	}
+	
+	// EndPoint - Query Nativa
+	@GetMapping("/cursosOrdenadosPorNome")
+	public ResponseEntity<List<Curso>> cursosOrdemNome() {
+		List<Curso> cursoOrdemPorNome = repository.findByAllSortNomeCurso();
+		return ResponseEntity.ok(cursoOrdemPorNome);
+	}
+			
+	// EndPoint - Query Spring Data
+	@GetMapping("/listar/{nome}")
+	public Curso listarNomeCurso(@PathVariable String nome) {
+		return repository.findByNome(nome);
+	}
 }

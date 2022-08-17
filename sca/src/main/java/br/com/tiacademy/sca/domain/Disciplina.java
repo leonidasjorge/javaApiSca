@@ -21,16 +21,17 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 public class Disciplina implements CrudDomain<Long>, Serializable {
-	
+
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
-	
+
 	private String carga_horaria;
-	private Date data_cadastro;	
+	private Date data_cadastro;
 	private String nome;
-	
+/*
 	@ManyToOne
 	@JoinColumn(name = "curso_id", referencedColumnName = "id")
 	private Curso curso;
+*/
 }

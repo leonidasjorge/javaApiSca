@@ -1,71 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-				   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
-	
-		<changeSet id="1" author="Leônidas">
-		<preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela CURSO">
+
+	<changeSet id="1" author="Leônidas">
+		<preConditions onFail="MARK_RAN"
+			onFailMessage="Já existe a tabela DISCIPLINA">
 			<not>
-				<tableExists tableName="curso"/>
+				<tableExists tableName="disciplina" />
 			</not>
 		</preConditions>
-		
-		<createTable tableName="curso">
-			<column name="carga_horaria" type="${descricao}">
-				<constraints nullable="false"/>
-			</column>		
-			<column name="data_cadastro" type="${data}">
-				<constraints nullable="false"/>
-			</column>	
-			<column name="id" type="int">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="pk_curso"/>
-			</column>
-			<column name="nome" type="${descricao}">
-				<constraints nullable="false"/>
-			</column>			
-		</createTable>
-		
-		<addAutoIncrement tableName="curso"
-							columnName="id"
-							columnDataType="int"
-							incrementBy="1"
-							startWith="1"/>
-	</changeSet>	
-	
-	<changeSet id="2" author="Leônidas">
-		<preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela DISCIPLINA">
-			<not>
-				<tableExists tableName="disciplina"/>
-			</not>
-		</preConditions>
-		
+
 		<createTable tableName="disciplina">
 			<column name="carga_horaria" type="${descricao}">
-				<constraints nullable="false"/>
-			</column>			
+				<constraints nullable="false" />
+			</column>
 			<column name="data_cadastro" type="${data}">
-				<constraints nullable="false"/>
-			</column>	
+				<constraints nullable="false" />
+			</column>
 			<column name="id" type="int">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="pk_disciplina"/>
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_disciplina" />
 			</column>
 			<column name="nome" type="${descricao}">
-				<constraints nullable="false"/>
+				<constraints nullable="false" />
 			</column>
-			
-			<column name="curso_id" type="int">
-				<constraints foreignKeyName="fk_disciplina_curso"
-						referencedTableName="curso"
-						referencedColumnNames="id"/>
-			</column>				
 		</createTable>
-		
+
 		<addAutoIncrement tableName="disciplina"
-							columnName="id"
-							columnDataType="int"
-							incrementBy="1"
-							startWith="1"/>
+			columnName="id" columnDataType="int" incrementBy="1" startWith="1" />
 	</changeSet>
-	
+
+	<changeSet id="2" author="Leônidas">
+		<preConditions onFail="MARK_RAN"
+			onFailMessage="Já existe a tabela CURSO">
+			<not>
+				<tableExists tableName="curso" />
+			</not>
+		</preConditions>
+
+		<createTable tableName="curso">
+			<column name="carga_horaria" type="${descricao}">
+				<constraints nullable="false" />
+			</column>
+			<column name="data_cadastro" type="${data}">
+				<constraints nullable="false" />
+			</column>
+			<column name="id" type="int">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_curso" />
+			</column>
+			<column name="nome" type="${descricao}">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="disciplina_id" type="int">
+				<constraints nullable="false"
+					foreignKeyName="fk_curso_disciplina"
+					referencedTableName="disciplina" referencedColumnNames="id" />
+			</column>
+		</createTable>
+
+		<addAutoIncrement tableName="curso" columnName="id"
+			columnDataType="int" incrementBy="1" startWith="1" />
+	</changeSet>
+
 </databaseChangeLog>
