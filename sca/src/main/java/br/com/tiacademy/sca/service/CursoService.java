@@ -10,9 +10,11 @@ public class CursoService extends CrudService<Curso, Long> {
 	
 	@Override
 	protected Curso editarEntidade(Curso recuperado, Curso entidade) {
+		
 		recuperado.setNome(entidade.getNome());
-		recuperado.setCarga_horaria(entidade.getCarga_horaria());
-		recuperado.setData_cadastro(entidade.getData_cadastro());
+		recuperado.setCargaHoraria(entidade.getCargaHoraria());
+		recuperado.setDataCadastro(entidade.getDataCadastro());
+		
 		return recuperado;
 	}
 	

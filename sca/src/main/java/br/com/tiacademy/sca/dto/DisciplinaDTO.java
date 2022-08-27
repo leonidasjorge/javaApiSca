@@ -1,7 +1,7 @@
 package br.com.tiacademy.sca.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,9 @@ public class DisciplinaDTO implements Serializable {
 
 	private Long id;
 	
-	private String carga_horaria;
-	private Date data_cadastro;	
+	private String cargaHoraria;
+	
+	private LocalDate dataCadastro;
+	
 	private String nome;
 }

@@ -10,9 +10,11 @@ public class DisciplinaService extends CrudService<Disciplina, Long> {
 
 	@Override
 	protected Disciplina editarEntidade(Disciplina recuperado, Disciplina entidade) {
+		
 		recuperado.setNome(entidade.getNome());
-		recuperado.setCarga_horaria(entidade.getCarga_horaria());
-		recuperado.setData_cadastro(entidade.getData_cadastro());
+		recuperado.setCargaHoraria(entidade.getCargaHoraria());
+		recuperado.setDataCadastro(entidade.getDataCadastro());
+		
 		return recuperado;
 	}
 	

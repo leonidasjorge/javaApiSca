@@ -1,15 +1,13 @@
 package br.com.tiacademy.sca.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 import br.com.tiacademy.sca.core.crud.CrudDomain;
 import lombok.AllArgsConstructor;
@@ -26,12 +24,12 @@ public class Disciplina implements CrudDomain<Long>, Serializable {
 	@Id
 	private Long id;
 
-	private String carga_horaria;
-	private Date data_cadastro;
+	@Column(name = "carga_horaria")
+	private String cargaHoraria;
+	
+	@Column(name = "data_cadastro")
+	private LocalDate dataCadastro;
+	
 	private String nome;
-/*
-	@ManyToOne
-	@JoinColumn(name = "curso_id", referencedColumnName = "id")
-	private Curso curso;
-*/
+
 }
