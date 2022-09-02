@@ -21,4 +21,8 @@ public interface DisciplinaRepository extends CrudRepository<Disciplina, Long> {
 		
 	// Query Spring Data
 	Disciplina findByNome(String nome);
+	
+	// Query Spring Data
+	List<Disciplina> findByIdIn(List<Long> ids);
+	
 }
